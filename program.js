@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944b266772379e52/8c35e153a217424de10000000a174cb4.html?locale=en-US';
 
 (async () => {
@@ -51,8 +52,7 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
 
    json[data[0][0]] = values;
 
-   console.log(json);
-
+   fs.writeFileSync('podatki.json', JSON.stringify(json), (err) => console.err(err));
 
    await browser.close();
 })();
