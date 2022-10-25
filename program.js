@@ -18,13 +18,19 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
 
     console.log('test 1');
    const data = await page.evaluate(() => {
-        const rezultat = {};
+        const rezultat = [];
         const tabela = document.querySelector('.tbody');
 
         for(let row of tabela.rows) {
-            const [keyCell, valueCell] = row.cells;
+            const vrstica = row.cells;
 
-            rezultat[keyCell.innerText] = valueCell.innerText;
+            let vmesnaVrstica = [];
+
+            for(let i = 0; i < vrstica.length; i++) {
+                vmesnaVrstica.push(vrstica[i].innerText);
+            }
+
+            rezultat.push(vmesnaVrstica);
         }
 
         return rezultat;
