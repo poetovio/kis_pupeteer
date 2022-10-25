@@ -16,7 +16,6 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
     console.log(naslov);
     */
 
-    console.log('test 1');
    const data = await page.evaluate(() => {
         const rezultat = [];
         const tabela = document.querySelector('.tbody');
@@ -36,27 +35,23 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
         return rezultat;
    });
 
-   console.log(data);
-
    let json = {};
 
-   let imeJsona = data[0][0];
-
-   let spremenljivke = [];
-
-   for(let i = 1; i < data[0].length; i++) {
-    spremenljivke.push(data[0][i]);
-   }
-
-   let instance = [];
+   let values = {};
 
    for(let i = 1; i < data.length; i++) {
-        instance.push(data[i][0]);
+        let value = {};
+
+        for(let j = 1; j < data[i].length; j++) {
+            value[data[0][j]] = data[i][j];
+        }
+
+        values[data[i][0]] = value;
    }
 
-   console.log(imeJsona);
-   console.log(spremenljivke);
-   console.log(instance);
+   json[data[0][0]] = values;
+
+   console.log(json);
 
 
    await browser.close();
