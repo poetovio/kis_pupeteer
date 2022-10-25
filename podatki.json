@@ -1,0 +1,28 @@
+{
+    "Incapacity to work": {
+        "A": {
+            "From": "12/18/96",
+            "To": "01/17/96",
+            "Calendar days": "31",
+            "CP days": "42",
+            "KENN1": "1",
+            "KENN2": "1"
+        },
+        "B": {
+            "From": "04/22/96",
+            "To": "05/10/96",
+            "Calendar days": "19",
+            "CP days": "42",
+            "KENN1": "2",
+            "KENN2": "2"
+        },
+        "A *": {
+            "From": "05/03/96",
+            "To": "05/30/96",
+            "Calendar days": "20",
+            "CP days": "42 -31=11",
+            "KENN1": "1",
+            "KENN2": "2"
+        }
+    }
+}
