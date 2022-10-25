@@ -38,6 +38,26 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
 
    console.log(data);
 
+   let json = {};
+
+   let imeJsona = data[0][0];
+
+   let spremenljivke = [];
+
+   for(let i = 1; i < data[0].length; i++) {
+    spremenljivke.push(data[0][i]);
+   }
+
+   let instance = [];
+
+   for(let i = 1; i < data.length; i++) {
+        instance.push(data[i][0]);
+   }
+
+   console.log(imeJsona);
+   console.log(spremenljivke);
+   console.log(instance);
+
 
    await browser.close();
 })();
