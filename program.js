@@ -6,26 +6,31 @@ const url = 'https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/7c1ef52f3fea49d1944
    const page = await browser.newPage();
    await page.goto(url);
 
-   await page.waitForSelector('#topic-title');
+   await page.waitForSelector('.entry');
 
+    /*
     naslov = await page.evaluate(() => {
         return document.querySelector("#topic-title").textContent.trim();
     });
 
     console.log(naslov);
+    */
 
-   /*
+    console.log('test 1');
    const data = await page.evaluate(() => {
-        const rezultat = [];
-        const tabela = document.querySelector('tbody');
+        const rezultat = {};
+        const tabela = document.querySelector('.tbody');
 
-        
-        return tabela;
+        for(let row of tabela.rows) {
+            const [keyCell, valueCell] = row.cells;
+
+            rezultat[keyCell.innerText] = valueCell.innerText;
+        }
+
+        return rezultat;
    });
 
    console.log(data);
-   */
-
 
 
    await browser.close();
